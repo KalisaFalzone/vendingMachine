@@ -1,0 +1,16 @@
+item,cost
+Pepsi,0.75
+Fanta,0.75
+Snickers,1.25
+Twix,1.00
+Apple,0.50
+Juice,2.00
+Egg,0.50
+Cookie,2.00
+Chips,2.00
+Chocolate,3.25
+Crackers,1.00
+Soup,2.50
+Orange,0.75
+Tea,2.00
+Coffee,2.25
