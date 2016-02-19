@@ -9,9 +9,9 @@ exports.isEnoughCash = function(cash, cost) {
 }
 
 exports.getRemainder = function(cash, cost) {
-  if ( !((cash - cost ) % 1) ) {
-    return JSON.stringify(cash - cost) + '.00';
-  } else {
-    return JSON.stringify(cash - cost);
-  }
+
+  var remainder = '';
+  if (!((cash - cost ) % 1)) { remainder = '.00'; }
+
+  return (cash - cost) + remainder;
 }
