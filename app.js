@@ -1,6 +1,7 @@
 var Promise = require('bluebird');
 var fs = Promise.promisifyAll(require('fs'));
 var Converter = require("csvtojson").Converter;
+var helpers = require('./helpers.js');
 
 //Example vendingMachineItems: [{item: "sprite", cost: 1.00, quantity: 10}]
 function loadVendingMachine(path) {
@@ -38,33 +39,17 @@ function lineUpCustomers(path, vendingMachineItems) {
   });
 }
 
-function isDenominationValid (amount) {
-  return (amount % 0.25) === 0;
-}
-
-function isEnoughCash (cash, cost) {
-  return cash >= cost;
-}
-
-function getRemainder (cash, cost) {
-  if ( !((cash - cost ) % 1) ) {
-    return JSON.stringify(cash - cost) + '.00';
-  } else {
-    return JSON.stringify(cash - cost);
-  }
-}
-
 function customersPurchase(vendingMachineItems, customerOrders) {
   var results = [];
   customerOrders.forEach(function(order) {
-    if (!isDenominationValid(order.cash, vendingMachineItems)){
+    if (!helpers.isDenominationValid(order.cash, vendingMachineItems)){
       results.push("Invalid denomination");
-    } else if (!isEnoughCash(order.cash, vendingMachineItems[order.itemNumber].cost)) {
+    } else if (!helpers.isEnoughCash(order.cash, vendingMachineItems[order.itemNumber].cost)) {
       results.push('Insufficient funds');
     } else if (vendingMachineItems[order.itemNumber].quantity === 0) {
       results.push('Out of ' + vendingMachineItems[order.itemNumber].item);
     } else {
-      var remainder = getRemainder(order.cash, vendingMachineItems[order.itemNumber].cost)
+      var remainder = helpers.getRemainder(order.cash, vendingMachineItems[order.itemNumber].cost)
       vendingMachineItems[order.itemNumber].quantity--;
       results.push("Success, " + remainder);
     }
