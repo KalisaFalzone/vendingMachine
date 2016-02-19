@@ -4,12 +4,14 @@
   "main": "app.js",
   "author": "Kalisa Falzone",
   "license": "MIT",
-  "devDependencies": {},
+  "devDependencies": {
+    "mocha": "^2.4.5"
+  },
   "dependencies": {
     "bluebird": "^3.3.1",
     "csvtojson": "^0.5.2"
   },
   "scripts": {
-  "test": "mocha test"
+    "test": "mocha test"
   }
 }
