@@ -55,7 +55,6 @@ function getRemainder (cash, cost) {
 }
 
 function customersPurchase(vendingMachineItems, customerOrders) {
-  console.log('starting vending machine items', vendingMachineItems)
   var results = [];
   customerOrders.forEach(function(order) {
     if (!isDenominationValid(order.cash, vendingMachineItems)){
