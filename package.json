@@ -1,0 +1,12 @@
+{
+  "name": "vendingMaching",
+  "version": "1.0.0",
+  "main": "app.js",
+  "author": "Kalisa Falzone",
+  "license": "MIT",
+  "devDependencies": {},
+  "dependencies": {
+    "bluebird": "^3.3.1",
+    "csvtojson": "^0.5.2"
+  }
+}

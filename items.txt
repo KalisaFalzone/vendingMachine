@@ -1,3 +1,4 @@
+item,cost
 Pepsi,0.75
 Fanta,0.75
 Snickers,1.25
