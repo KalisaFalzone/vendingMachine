@@ -56,19 +56,21 @@ function getRemainder (cash, cost) {
 
 function customersPurchase(vendingMachineItems, customerOrders) {
   console.log('starting vending machine items', vendingMachineItems)
+  var results = [];
   customerOrders.forEach(function(order) {
     if (!isDenominationValid(order.cash, vendingMachineItems)){
-      console.log("Invalid denomination");
+      results.push("Invalid denomination");
     } else if (!isEnoughCash(order.cash, vendingMachineItems[order.itemNumber].cost)) {
-      console.log('Insufficient funds');
+      results.push('Insufficient funds');
     } else if (vendingMachineItems[order.itemNumber].quantity === 0) {
-      console.log('Out of ', vendingMachineItems[order.itemNumber].item);
+      results.push('Out of ' + vendingMachineItems[order.itemNumber].item);
     } else {
       var remainder = getRemainder(order.cash, vendingMachineItems[order.itemNumber].cost)
       vendingMachineItems[order.itemNumber].quantity--;
-      console.log("Success, " + remainder);
+      results.push("Success, " + remainder);
     }
   })
+  return results.join('\n');
 }
 
 loadVendingMachine('items.txt')
@@ -76,6 +78,9 @@ loadVendingMachine('items.txt')
   return lineUpCustomers('customer.txt', vendingMachineItems);
 })
 .then(function(result) {
-  return customersPurchase(result.vendingMachineItems, result.customerOrders);
+  var output = customersPurchase(result.vendingMachineItems, result.customerOrders);
+  fs.writeFile('output.txt', output, function(err) {
+    if(err) {throw err}
+  })
 })
 
