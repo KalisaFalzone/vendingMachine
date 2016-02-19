@@ -9,9 +9,7 @@ exports.isEnoughCash = function(cash, cost) {
 }
 
 exports.getRemainder = function(cash, cost) {
-
   var remainder = '';
   if (!((cash - cost ) % 1)) { remainder = '.00'; }
-
   return (cash - cost) + remainder;
 }
