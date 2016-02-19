@@ -27,7 +27,11 @@ item,cost
 Pepsi,0.75
 Fanta,0.75
 Snickers,1.25
+Twix,1.00
+Apple,0.50
 ```
+
+This describes the items being loaded into the vending machine. The vending machine can hold 10 of each item
 
 2. customer.txt
 
@@ -39,7 +43,10 @@ itemNumber,cash
 14,5.75
 10,5.03
 2,0.25
+1,2.00
 ```
+
+This describes the item number customers would like to buy and the dollar amount they supplied (only allowed to accept $1, $5 and 0.25 denominations)
 
 to run the program from the main directory:
  ```sh
@@ -55,7 +62,6 @@ Success, 1.25
 Success, 3.75
 Invalid denomination
 Insufficient funds
-Success, 1.25
 Success, 1.25
 ```
 
