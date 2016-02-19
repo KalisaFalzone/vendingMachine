@@ -39,6 +39,7 @@ function lineUpCustomers(path, vendingMachineItems) {
   });
 }
 
+//creates data for output.txt file
 function customersPurchase(vendingMachineItems, customerOrders) {
   var results = [];
   customerOrders.forEach(function(order) {
@@ -57,6 +58,8 @@ function customersPurchase(vendingMachineItems, customerOrders) {
   return results.join('\n');
 }
 
+//async code promisified to reformat items.txt and customer.txt into json and then run through purchases
+//to create the output file for transactions
 loadVendingMachine('items.txt')
 .then(function(vendingMachineItems) {
   return lineUpCustomers('customer.txt', vendingMachineItems);
